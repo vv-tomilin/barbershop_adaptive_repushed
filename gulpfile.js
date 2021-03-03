@@ -28,6 +28,7 @@ let path = {
 let { src, dest } = require("gulp"),
   gulp = require("gulp");
 let browsersync = require("browser-sync").create();
+//let browsreload = browsersync.reload;
 let fileinclude = require("gulp-file-include");
 let del = require("del");
 let scss = require("gulp-sass");
@@ -35,7 +36,7 @@ let autoprefixer = require("gulp-autoprefixer");
 let group_media = require("gulp-group-css-media-queries");
 let clean_css = require("gulp-clean-css");
 let rename = require("gulp-rename");
-//let imagemin = require("gulp-imagemin");
+let imagemin = require("gulp-imagemin");
 
 
 
@@ -44,7 +45,8 @@ function browserSync(params) {
     server: {
       baseDir: "./" + project_folder + "/"
     },
-    port: 3000,
+    port: 8080,
+    directory: true,
     notify: false
   })
 }
@@ -85,6 +87,14 @@ function css() {
 
 function images() {
   return src(path.src.img)
+    .pipe(
+      imagemin({
+        progressive: true,
+        svgoPlugins: [{ removeViewBox: false }],
+        interlaced: true,
+        optimizationLevel: 3 // 0 to 7
+      })
+    )
     .pipe(dest(path.build.img))
     .pipe(browsersync.stream())
 }
