@@ -28,7 +28,6 @@ let path = {
 let { src, dest } = require("gulp"),
   gulp = require("gulp");
 let browsersync = require("browser-sync").create();
-//let browsreload = browsersync.reload;
 let fileinclude = require("gulp-file-include");
 let del = require("del");
 let scss = require("gulp-sass");
@@ -37,8 +36,6 @@ let group_media = require("gulp-group-css-media-queries");
 let clean_css = require("gulp-clean-css");
 let rename = require("gulp-rename");
 let imagemin = require("gulp-imagemin");
-
-
 
 function browserSync(params) {
   browsersync.init({
