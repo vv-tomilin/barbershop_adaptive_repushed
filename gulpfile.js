@@ -14,7 +14,7 @@ let path = {
     css: source_folder + "/scss/style.scss",
     js: source_folder + "/js/script.js",
     img: source_folder + "/img/**/*.+(jpg|png|svg|gif|ico|webp)",
-    fonts: source_folder + "/fonts/"
+    fonts: source_folder + "/fonts/*.ttf"
   },
   watch: {
     html: source_folder + "/**/*.html",
@@ -36,13 +36,15 @@ let group_media = require("gulp-group-css-media-queries");
 let clean_css = require("gulp-clean-css");
 let rename = require("gulp-rename");
 let imagemin = require("gulp-imagemin");
+let ttf2woff = require("gulp-ttf2woff");
+let ttf2woff2 = require("gulp-ttf2woff2");
 
 function browserSync(params) {
   browsersync.init({
     server: {
       baseDir: "./" + project_folder + "/"
     },
-    port: 8080,
+    port: 3000,
     directory: true,
     notify: false
   })
@@ -96,6 +98,15 @@ function images() {
     .pipe(browsersync.stream())
 }
 
+function fonts() {
+  return src(path.src.fonts)
+    .pipe(ttf2woff())
+    .pipe(dest(path.build.fonts))
+    .pipe(src(path.src.fonts))
+    .pipe(ttf2woff2())
+    .pipe(dest(path.build.fonts))
+}
+
 function watchFiles(params) {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
@@ -106,10 +117,11 @@ function clean(params) {
   return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(css, html, images));
+let build = gulp.series(clean, gulp.parallel(css, html, images, fonts));
 
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
+exports.fonts = fonts;
 exports.images = images;
 exports.css = css;
 exports.html = html;
