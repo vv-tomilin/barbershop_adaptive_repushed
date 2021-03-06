@@ -2,47 +2,210 @@
 	background-color: $darkgrey;
 	color: #ffffff;
 
-	 @media (min-width:$tablet-width) {
-		padding: 0 64px;;
+	&__wrapper {
+		@media (min-width:$tablet-width) {
+			$stats-shift: -179px;
+
+			padding: 0 64px;
+			position: relative;
+			top: $stats-shift;
+			margin-bottom: $stats-shift;
+		}
+
+		@media (min-width:$desktop-width) {
+			$stats-shift: -159px;
+
+			top: $stats-shift;
+			margin: auto;
+			margin-bottom: $stats-shift;
+			max-width: 960px;
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+		}
+	
 	}
 
-	@media (min-width:$desktop-width) {
-		margin: auto;
-		max-width: 960px;
-		display: grid;
-		grid-template-columns: 1fr 2fr;
+	&__header {
+		padding: 28px 20px;
+		background-color: #fff;
+		color: #000;
+
+		@media (min-width:$tablet-width) {
+			position: relative;
+			padding-top: 32px;
+			padding-right: 34px;
+			padding-left: 34px;
+			padding-bottom: 30px;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+
+			&::before {
+				position: absolute;
+				left: -22px;
+				top: 42px;
+				width: 23px;
+				height: 23px;
+
+				//! Добавление --svg-- напрямую (лекция 5 <1:58:59>)
+				//! также показан инструмент для этого от "yoksel"
+				//! <<yoksel svg encoder>>
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpolygon points='0,0 1,0 1,1' fill='white'/%3E%3C/svg%3E");
+				
+				content: "";
+			}
+		}
+
+		@media (min-width:$desktop-width) {
+			grid-template-columns: auto;
+			grid-template-rows: min-content 1fr min-content;
+			align-content: start;
+		}
 	}
 
-		&__header {
-			background-color: #fff;
-			color: #000;
+	&__slogan {
+		margin: 0;
+		margin-bottom: 13px;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 1;
+		font-weight: bold;
+		font-size: 30px;
+
+		@media (min-width:$tablet-width) {
+			margin-bottom: 17px;
+			text-align: left;
+			text-transform: none;
+			font-size: 40px;
 		}
 
-		&__slogan {
-			margin: 0;
+		@media (min-width:$desktop-width) {
+			margin-bottom: 32px;
 		}
+	}
 
-		&__intro {
-			margin: 0;
-		}
+	&__intro {
+		margin: 0;
+		font-size: 20px;
+		line-height: 1.35;
+		text-align: center;
 
-		&__legend {
-			margin: 0;
-
-			&--top {
-				@media (max-width:$mobile-width-only) {
-					display: none;
-				}
+		@media (max-width:$mobile-width-only) {
+			br {
+				display: none;
 			}
-
-			&--bottom {
-				@media (min-width:$tablet-width) {
-					display: none;
-				}
-			}
 		}
 
-		&__list {
+		@media (min-width:$tablet-width) {
+			padding-top: 4px;
+			padding-left: 34px;
+			text-align: left;
+		}
+
+		@media (min-width:$desktop-width) {
+			padding-left: 0;
+		}
+	}
+
+	&__legend {
+		margin: 0;
+		display: block;
+		font-size: 20px;
+		line-height: 1;
+	}
+
+	&__legend--top {
+		color: rgba(0, 0, 0, 0.3);
+
+		@media (max-width:$mobile-width-only) {
+			display: none;
+		}
+	}
+
+	&__legend--bottom {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.3);
+
+		@media (min-width:$tablet-width) {
+			display: none;
+		}
+	}
+
+	&__list {
+		margin: 0;
+		margin-bottom: 20px;
+		background-color: #353535;
+
+		@media (min-width:$tablet-width) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@media (min-width:$desktop-width) {
 			margin: 0;
 		}
+	}
+
+	&__item {
+		padding: 20px;
+		display: flex;
+		justify-content: space-between;
+
+		@media (min-width:$tablet-width) {
+			display: block;
+			padding-top: 25px;
+			padding-right: 34px;
+			padding-bottom: 30px;
+			padding-left: 34px;
+		}
+
+		&:nth-child(1) {
+			background-color: rgba(255, 255, 255, 0.05);
+		}
+
+		&:nth-child(2) {
+			background-color: rgba(255, 255, 255, 0.12);
+		}
+
+		&:nth-child(4) {
+			background-color: rgba(255, 255, 255, 0.12);
+
+			@media (min-width:$tablet-width) {
+				background-color: rgba(255, 255, 255, 0.05);
+			}
+		}
+	}
+
+	&__number {
+		line-height: 1;
+		font-weight: bold;
+		font-size: 40px;
+
+		sup {
+			position: static;
+			margin-left: 5px;
+			vertical-align: baseline;
+			font-size: inherit;
+		}
+
+		@media (min-width:$tablet-width) {
+			margin-bottom: 12px;
+			font-size: 72px;
+		}
+	}
+
+	&__description {
+		margin: 0;
+		text-align: right;
+		line-height: 1;
+		font-size: 18px;
+
+		@media (min-width:$tablet-width) {
+			text-align: left;
+			font-size: 20px;
+	
+			br {
+				display: none;
+			}
+		}
+	}
 }
