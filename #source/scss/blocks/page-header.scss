@@ -19,6 +19,12 @@
 				background-image: url("../../img/bg-header.jpg");
 				background-repeat: no-repeat;
 				background-position: center -9px;
+
+				//! Пример загрузки картинки для ретинового экрана 2х
+				//@media (min-resolution: 2dppx) {
+				//	background-image: url("../../img/bg-header@2x.png");
+				//	background-size: 1338px auto;
+				//}
 			}
 
 			@media (min-width: $desktop-width) {
