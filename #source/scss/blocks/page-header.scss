@@ -37,8 +37,16 @@
 				width: 226px;
 				height: 85px;
 
+				@media (min-width: $tablet-width) {
+					margin-top: 39px;
+					width: 370px;
+    			height: 101px;
+				}
+
 				@media (min-width: $desktop-width) {
 					margin-top: 57px;
+					width: 370px;
+    			height: 153px;
 				}
 			}
 		}

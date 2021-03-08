@@ -66,6 +66,12 @@
 		&:active .user-list__login-icon {
 			opacity: 0.1;
 		}
+
+		span {
+			position: relative;
+			opacity: 1;
+			top:4px;
+		}
 	}
 
 	&__login {
