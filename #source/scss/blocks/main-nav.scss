@@ -45,7 +45,7 @@
 
 	&--closed .main-nav__toggle:active::before {
 		background-color: fade(#fff, 30%);
-		box-shadow: 0 8px 0 0 fade(#fff, 30%), 
+		box-shadow: 0 8px 0 0 fade(#fff, 30%),
 								0 16px 0 0 fade(#fff, 30%);
 	}
 
@@ -140,16 +140,16 @@
 			z-index: 2;
 			width: 7px;
 			height: 100%;
-			
-			//! Здесь не работает <<fade(#000, 40%)>> 
-			//! работает только в LESS так как он 
+
+			//! Здесь не работает <<fade(#000, 40%)>>
+			//! работает только в LESS так как он
 			//! переводит --fade-- в --rgba--
 			box-shadow: inset 4px 0px 7px -2px rgba(0, 0, 0, 0.4);
 		}
 
 		.main-nav--nojs .main-nav__toggle {
 			//! Здесь отключаем только кнопку закрытия,
-			//! чтобы в том случае, если не загрузится 
+			//! чтобы в том случае, если не загрузится
 			//! javascript, то пользователь все равно мог
 			//! взаимодействовать с меню
 
